@@ -19,6 +19,12 @@
     - select voucher (employee)
 
 
+## Description
+
+- Mitarbeiter ->
+- Marketing ->
+...(TODO: complete section)
+
 ## Hints
 - without user login
 - user sees all realized pages
