@@ -17,12 +17,13 @@
             <th>Typ</th>
             <th>Baujahr</th>
             <th>Farbcode</th>
+            <th>Antrag erstellt am...</th>
         </tr>
 
         <!-- get all database request entries -->
         @foreach ($requests as $request)
             <tr>
-                <td>O</td>
+                <td>O</td> <!-- Add Button to Send Mail to Employee -->
                 <td>{{$request->surname}}</td>
                 <td>{{$request->firstname}}</td>
                 <td>{{$request->brand}}</td>
@@ -31,6 +32,7 @@
                 <td>{{$request->type}}</td>
                 <td>{{$request->cnstrYear}}</td>
                 <td>{{$request->color}}</td>
+                <td>{{$request->created_at}}</td> <!-- optional TODO: change format -->
             </tr>
         @endforeach
     </table>

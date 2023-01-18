@@ -20,6 +20,13 @@
             <p>{{$message}}</p>
         @enderror
 
+        <label for="surname">E-Mail-Adresse:</label>
+        <input placeholder="Email" value="{{old('email')}}" type="text" name="email">
+        @error('email')
+            <!-- action if validation fails -->
+            <p>{{$message}}</p>
+        @enderror
+
         <label for="brand">Automarke:</label>
         <input placeholder="Automarke" value="{{old('brand')}}" type="text" name="brand">
         @error('brand')

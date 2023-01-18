@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('surname');
+            $table->string('email');
             $table->string('brand'); //car brand
             $table->string('model');
             $table->string('hstn'); //manufacturer number

@@ -18,6 +18,7 @@ class RequestController extends Controller
         $formFields = $request->validate([
             'firstname' => 'required',
             'surname' => 'required',
+            'email' => ['required', 'email'], //has to be formatted like email
             'brand' => 'required',
             'model' => 'required',
             'hstn' => 'required',
