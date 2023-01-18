@@ -32,4 +32,9 @@ class RequestController extends Controller
         //redirect to same page with flash message
         return redirect('/')->with('message', 'Antrag erfolgreich abgesendet.');
     }   
+
+    //Show Requests
+    public function show(Request $request) {
+        return view('marketing', ['requests' => RequestModell::all()]);
+    }
 }

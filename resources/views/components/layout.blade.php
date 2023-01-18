@@ -14,9 +14,14 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
+            color: #343434;
             background-color: #EAEDF8;
             padding: 85px 120px;
             margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 50px;
         }
 
         .flash-message {
@@ -34,7 +39,6 @@
         }
 
         nav a {
-            color: #343434;
            text-decoration: none; 
            margin-right: 25px;
         }  
@@ -43,8 +47,10 @@
             text-shadow: 2px 4px 10px #343434;
         }
 
+        /* form */
         form {
             margin: 50px;
+            margin-top: 0;
         }
 
         form label,
@@ -59,13 +65,20 @@
         form button:hover {
             cursor: pointer;
         }
+
+        /* table layout */
+        th, td {
+            text-align: center;
+            padding: 2px 12px;
+        }
+
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="">Mitarbeiter</a>
-        <a href="">Marketing</a>
+        <a href="\">Mitarbeiter</a>
+        <a href="\marketing">Marketing</a>
         <a href="">Sekretariat</a>
         <a href="">Gutscheinauswahl</a>
     </nav>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\RequestContext;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ Route::get('/', [RequestController::class, 'index']);
 
 //Save Request
 Route::post('/submit', [RequestController::class, 'save']);
+
+//Show Requests
+Route::get('/marketing', [RequestController::class, 'show']);
