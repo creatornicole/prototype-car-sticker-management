@@ -23,11 +23,14 @@
             background-color: #CED2E0;
             text-align: center;
             border-radius: 0 0 5px 5px;
-            height: 50px;
             width: 350px;
-            position: fixed;
-            top: 0; 
-            left: 30%; /* horizontally centered */
+            padding: 3px;
+            /* position message horizontally centered at the top of the screen */
+            position: absolute;
+            margin: 0 auto;
+            top: 0;
+            left: 0;
+            right: 0;
         }
 
         nav a {
