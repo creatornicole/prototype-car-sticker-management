@@ -47,18 +47,18 @@
             text-shadow: 2px 4px 10px #343434;
         }
 
-        /* form */
+        /* forms */
         form {
             margin: 50px;
             margin-top: 0;
         }
 
-        form label,
-        form input {
+        .request-form label,
+        .request-form input {
             display: block;
         }
 
-        form input {
+        .request-form input {
             margin: 0px 0px 20px 15px;
         }
 
@@ -67,9 +67,18 @@
         }
 
         /* table layout */
-        th, td {
+        .request-table th,
+        .request-table td {
             text-align: center;
             padding: 2px 12px;
+        }
+
+        .request-summary-table {
+            margin: 50px;
+        }
+
+        .request-summary-table td {
+            padding-right: 30px;
         }
 
     </style>

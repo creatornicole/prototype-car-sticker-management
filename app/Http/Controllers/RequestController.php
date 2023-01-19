@@ -38,4 +38,9 @@ class RequestController extends Controller
     public function show(Request $request) {
         return view('marketing', ['requests' => RequestModell::all()]);
     }
+
+    //Show Date Page
+    public function date(RequestModell $employee) {
+        return view('date', ['employee' => $employee]);
+    }
 }

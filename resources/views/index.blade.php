@@ -3,7 +3,7 @@
     <h1>Antrag auf Beklebung stellen</h1>
 
     <!-- make sticker request via form -->
-    <form method="post" action="/submit"> <!-- form adds data to database -->
+    <form class="request-form" method="post" action="/submit"> <!-- form adds data to database -->
         @csrf <!-- prevents cross side scripting -->
         
         <label for="firstname">Vorname:</label>

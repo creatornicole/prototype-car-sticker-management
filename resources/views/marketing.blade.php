@@ -5,7 +5,7 @@
     @if(count($requests) == 0)
         <p>Zur Zeit sind keine Anträge vorhanden.</p>
     @else 
-    <table>
+    <table class="request-table">
         <tr>
             <th></th>
             <th>Nachname</th>
@@ -23,7 +23,9 @@
         <!-- get all database request entries -->
         @foreach ($requests as $request)
             <tr>
-                <td>O</td> <!-- Add Button to Send Mail to Employee -->
+                <td>
+                    <a href="/marketing/{{$request->id}}/date">Bestätigen</a>
+                </td> <!-- Add Button to Send Mail to Employee -->
                 <td>{{$request->surname}}</td>
                 <td>{{$request->firstname}}</td>
                 <td>{{$request->brand}}</td>

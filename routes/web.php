@@ -23,3 +23,6 @@ Route::post('/submit', [RequestController::class, 'save']);
 
 //Show Requests
 Route::get('/marketing', [RequestController::class, 'show']);
+
+//Show Date Page
+Route::get('/marketing/{employee}/date', [RequestController::class, 'date']);
