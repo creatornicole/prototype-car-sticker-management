@@ -1,8 +1,16 @@
 <x-layout>
     <h1>Vereinbare einen Termin für {{$employee->firstname}}</h1>
 
-    <form method="post" action=""> <!-- saves date input in database -->
-        <input type="text"> 
+    <form method="post" action="/marketing/{{$employee->id}}/date/save"> <!-- saves date input in database -->
+        @csrf <!-- prevents crossside scripting -->
+        @method('PUT') <!-- updating request to database -->
+
+        <input type="text" name="appointment"> 
+        @error('appointment')
+            <!-- action if validation fails -->
+            <p>{{$message}}</p>
+        @enderror
+
         <button type="submit">Termin senden</button> <!-- send confirmation mail to employee -->
     </form>
 

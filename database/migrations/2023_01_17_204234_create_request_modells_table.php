@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('cnstrYear'); //construction year
             $table->string('color'); //as hex
+            $table->string('appointment')->nullable(); //by default: null
             $table->timestamps();
         });
     }

@@ -25,4 +25,7 @@ Route::post('/submit', [RequestController::class, 'save']);
 Route::get('/marketing', [RequestController::class, 'show']);
 
 //Show Date Page
-Route::get('/marketing/{employee}/date', [RequestController::class, 'date']);
+Route::get('/marketing/{employee}/date', [RequestController::class, 'appointment']);
+
+//Save Date
+Route::put('/marketing/{employee}/date/save', [RequestController::class, 'saveAppointment']);

@@ -23,7 +23,7 @@ class RequestController extends Controller
             'model' => 'required',
             'hstn' => 'required',
             'type' => 'required',
-            'cnstrYear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1), //number of four digits required
+            'cnstrYear' => 'required|digits:4|integer|min:1900|max:'.(date('Y')), //number of four digits required
             'color' => 'required' //(?) TODO: add regex to only accept hex code 
         ]); //sends error back in case of fail (@error in index file)
 
@@ -40,7 +40,19 @@ class RequestController extends Controller
     }
 
     //Show Date Page
-    public function date(RequestModell $employee) {
-        return view('date', ['employee' => $employee]);
+    public function appointment(RequestModell $employee) {
+        return view('appointment', ['employee' => $employee]);
+    }
+
+    //Save Date
+    public function saveAppointment(Request $request, RequestModell $employee) {
+        //validation
+        $formFields = $request->validate([
+            'appointment' => 'required|date_format:d.m.Y' //TODO: format as date 
+        ]);
+        //set date value in database
+        $employee->update($formFields);
+        //redirect to requests page
+        return redirect('/marketing');
     }
 }
