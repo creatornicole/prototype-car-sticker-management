@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RequestModell;
+use Illuminate\Support\Facades\DB;
 
 class RequestController extends Controller
 {
@@ -35,8 +36,10 @@ class RequestController extends Controller
     }   
 
     //Show Requests
-    public function show(Request $request) {
-        return view('marketing', ['requests' => RequestModell::all()]);
+    public function show() {
+        $requested = RequestModell::where('status', "beantragt")->get(); //get all requested requests
+        $confirmed = RequestModell::where('status', "bestaetigt")->get(); //get all confirmed request
+        return view('marketing', ['requested' => $requested, 'confirmed' => $confirmed]);
     }
 
     //Show Date Page
@@ -46,9 +49,13 @@ class RequestController extends Controller
 
     //Save Date
     public function saveAppointment(Request $request, RequestModell $employee) {
+        //update status in database
+        DB::table('request_modells')
+            ->where('id', $employee->id)
+            ->update(['status' => "bestaetigt"]);
         //validation
         $formFields = $request->validate([
-            'appointment' => 'required|date_format:d.m.Y' //TODO: format as date 
+            'appointment' => 'required|date_format:d.m.Y'
         ]);
         //set date value in database
         $employee->update($formFields);

@@ -81,6 +81,11 @@
             padding-right: 30px;
         }
 
+        .requests-main-div {
+            display: flex;
+            justify-content: space-around;
+        }
+
     </style>
 </head>
 <body>

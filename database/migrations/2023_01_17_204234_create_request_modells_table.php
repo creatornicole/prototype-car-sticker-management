@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('request_modells', function (Blueprint $table) {
             //definition table columns
             $table->id();
+            $table->string('status')->default('beantragt'); //depending on status value request will be displayed on another page
             $table->string('firstname');
             $table->string('surname');
             $table->string('email');
