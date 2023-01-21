@@ -29,7 +29,7 @@
                     @foreach ($requested as $request)
                             <tr>
                                 <td>
-                                    <a href="/marketing/{{$request->id}}/date">Bestätigen</a>
+                                    <a href="/marketing/{{$request->id}}/appointment">Bestätigen</a>
                                 </td> <!-- Add Button to Send Mail to Employee -->
                                 <td>{{$request->surname}}</td>
                                 <td>{{$request->firstname}}</td>
@@ -51,15 +51,17 @@
             <!-- display all database request entries in table where status is 'bestaetigt'
                 if database entries exist -->
             @if(count($confirmed) != 0)
-                <table>
+                <table class="request-table">
                     <tr>
                         <th>Nachname, Vorname</th>
                         <th>Termin</th>
                     </tr>
                     @foreach($confirmed as $confirm)
+                        <!-- optional TOOD: sort by earliest date -->
                         <tr>
                             <td>{{$confirm->surname}}, {{$confirm->firstname}}</td>
                             <td>{{$confirm->appointment}}</td>
+                            <td><a href="/marketing/{{$confirm->id}}/appointment/confirm">Bestätigen</a></td> <!-- button to confirm appointment -->
                         </tr>
                     @endforeach
                 </table>

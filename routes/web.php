@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RequestController;
 use Symfony\Component\Routing\RequestContext;
+use App\Http\Controllers\CarStickerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,14 @@ Route::post('/submit', [RequestController::class, 'save']);
 //Show Requests
 Route::get('/marketing', [RequestController::class, 'show']);
 
-//Show Date Page
-Route::get('/marketing/{employee}/date', [RequestController::class, 'appointment']);
+//Show Appointment Page
+Route::get('/marketing/{employee}/appointment', [RequestController::class, 'appointment']);
 
 //Save Date
-Route::put('/marketing/{employee}/date/save', [RequestController::class, 'saveAppointment']);
+Route::put('/marketing/{employee}/appointment/save', [RequestController::class, 'saveAppointment']);
+
+//Confirm Appointment
+Route::get('/marketing/{employee}/appointment/confirm', [RequestController::class, 'confirmAppointment']);
+
+//Show all currently active Requests
+Route::get('/sekretariat', [CarStickerController::class, 'show']);

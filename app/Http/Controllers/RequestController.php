@@ -62,4 +62,14 @@ class RequestController extends Controller
         //redirect to requests page
         return redirect('/marketing');
     }
+
+    //Confirm Appointment
+    public function confirmAppointment(Request $request, RequestModell $employee) {
+        //update status in database
+        DB::table('request_modells')
+            ->where('id', $employee->id)
+            ->update(['status' => "laufend"]);
+        //redirect to requests page
+        return redirect('/marketing');
+    }
 }

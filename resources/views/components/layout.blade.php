@@ -91,9 +91,9 @@
 <body>
 
     <nav>
-        <a href="\">Mitarbeiter</a>
-        <a href="\marketing">Marketing</a>
-        <a href="">Sekretariat</a>
+        <a href="/">Mitarbeiter</a>
+        <a href="/marketing">Marketing</a>
+        <a href="/sekretariat">Sekretariat</a>
         <a href="">Gutscheinauswahl</a>
     </nav>
 
