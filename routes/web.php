@@ -39,3 +39,8 @@ Route::get('/sekretariat', [CarStickerController::class, 'show']);
 
 //Confirm handing over of voucher
 Route::get('/sekretariat/{employee}/confirm', [CarStickerController::class, 'confirm']);
+
+//Show Voucher Selection Page
+Route::get('/vouchers', [CarStickerController::class, 'voucherselection']);
+
+//Set Voucher
