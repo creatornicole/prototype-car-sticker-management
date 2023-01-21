@@ -27,6 +27,9 @@ return new class extends Migration
             $table->string('cnstrYear'); //construction year
             $table->string('color'); //as hex
             $table->string('appointment')->nullable(); //by default: null
+            $table->string('voucher')->nullable(); //type of voucher  - by default: null
+            $table->string('last')->nullable(); //last handing over of voucher  - by default: null
+            $table->string('next')->nullable(); //next handing over of voucher - by default: null
             $table->timestamps();
         });
     }

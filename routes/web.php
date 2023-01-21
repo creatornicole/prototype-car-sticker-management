@@ -36,3 +36,6 @@ Route::get('/marketing/{employee}/appointment/confirm', [RequestController::clas
 
 //Show all currently active Requests
 Route::get('/sekretariat', [CarStickerController::class, 'show']);
+
+//Confirm handing over of voucher
+Route::get('/sekretariat/{employee}/confirm', [CarStickerController::class, 'confirm']);

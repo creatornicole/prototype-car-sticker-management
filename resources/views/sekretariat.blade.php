@@ -1,6 +1,8 @@
 <x-layout>
     <h1>Beklebungen</h1>
 
+
+
     <!-- show all active requests -->
     @if(count($active) == 0)
         <p>Keine Beklebungen vorhanden.</p>
@@ -20,10 +22,11 @@
                 <tr>
                     <td>{{$a->surname}}, {{$a->firstname}}</td>
                     <td>{{$a->brand}}, {{$a->model}}, {{$a->hstn}}, {{$a->type}}, {{$a->cnstrYear}}, {{$a->color}}</td>
-                    <td></td>
+                    <td>{{$a->voucher}}</td>
                     <td>{{$a->appointment}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$a->last}}</td>
+                    <td>{{$a->next}}</td>
+                    <td><a href="/sekretariat/{{$a->id}}/confirm">Auszahlen</a></td>
                 </tr>
             @endforeach
         </table>

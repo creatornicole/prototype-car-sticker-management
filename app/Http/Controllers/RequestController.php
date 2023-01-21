@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\RequestModell;
 use Illuminate\Support\Facades\DB;
@@ -69,6 +70,11 @@ class RequestController extends Controller
         DB::table('request_modells')
             ->where('id', $employee->id)
             ->update(['status' => "laufend"]);
+        //update next handing over of voucher
+        $next = Carbon::parse($employee->appointment)->addMonths(4);
+        DB::table('request_modells')
+            ->where('id', $employee->id)
+            ->update(['next' => $next]);
         //redirect to requests page
         return redirect('/marketing');
     }
