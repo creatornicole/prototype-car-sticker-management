@@ -12,7 +12,7 @@ class CarStickerController extends Controller
     //Show all currently active Requests
     public function show() {
         $active = RequestModell::where('status', "laufend")->get(); //get all active requests
-        return view('sekretariat', ['active' => $active]);
+        return view('voucher.sekretariat', ['active' => $active]);
     }
 
     //Confirm handing over of voucher
@@ -32,12 +32,12 @@ class CarStickerController extends Controller
     //Show Voucher Selection Page
     public function voucherselection() {
         $active = RequestModell::where('status', "laufend")->get(); //get all active requests
-        return view('vouchers', ['active' => $active]);
+        return view('voucher.vouchers', ['active' => $active]);
     }
 
-    //Show Voucher for each Employee
+    //Show Voucher for Employee
     public function change(RequestModell $employee) {
-        return view('voucher', ['employee' => $employee]);
+        return view('voucher.voucher', ['employee' => $employee])->with('eID', $employee->id);
     }
 
     //Save Change Voucher

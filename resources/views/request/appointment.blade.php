@@ -1,20 +1,17 @@
 <x-layout>
-    <h1>Wähle Deinen Wunschgutschein aus</h1>
+    <h1>Vereinbare einen Termin für {{$employee->firstname}}</h1>
 
-    <p>Aktuell: {{$employee->voucher}}</p>
-
-    <form method="post" action="/vouchers/{{$employee->id}}/change/save"> <!-- saves date input in database -->
+    <form method="post" action="/marketing/{{$employee->id}}/appointment/save"> <!-- saves date input in database -->
         @csrf <!-- prevents crossside scripting -->
         @method('PUT') <!-- updating request to database -->
 
-        <label for="voucherlist">Ändern:</label>
-        <select name="voucherlist">
-            <option value="Wunschgutschein 1">Wunschgutschein 1</option>
-            <option value="Wunschgutschein 2">Wunschgutschein 2</option>
-            <option value="Wunschgutschein 3">Wunschgutschein 3</option>
-        </select>
+        <input type="text" name="appointment"> 
+        @error('appointment')
+            <!-- action if validation fails -->
+            <p>{{$message}}</p>
+        @enderror
 
-        <button type="submit">Speichern</button> <!-- optional TODO: send notification mail to employee -->
+        <button type="submit">Termin senden</button> <!-- send confirmation mail to employee -->
     </form>
 
     <hr>
@@ -38,4 +35,5 @@
             <td>{{$employee->created_at}}</td> <!-- TODO: change format -->
         </tr>
     </table>
+
 </x-layout>

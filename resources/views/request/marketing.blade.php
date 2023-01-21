@@ -29,7 +29,8 @@
                     @foreach ($requested as $request)
                             <tr>
                                 <td>
-                                    <a href="/marketing/{{$request->id}}/appointment">Bestätigen</a>
+                                    <a href="/marketing/{{$request->id}}/appointment">Bestätigen</a><br>
+                                    <a href="/marketing/{{$request->id}}/decline">Ablehnen</a>
                                 </td> <!-- Add Button to Send Mail to Employee -->
                                 <td>{{$request->surname}}</td>
                                 <td>{{$request->firstname}}</td>

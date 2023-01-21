@@ -11,7 +11,7 @@ class RequestController extends Controller
 {
     //Show Request Form
     public function index() {
-        return view('index');
+        return view('request.index');
     }
 
     //Save Request
@@ -33,22 +33,31 @@ class RequestController extends Controller
         RequestModell::create($formFields);
 
         //redirect to same page with flash message
-        return redirect('/')->with('message', 'Antrag erfolgreich abgesendet.');
+        return redirect('request.index')->with('message', 'Antrag erfolgreich abgesendet.');
     }   
 
     //Show Requests
     public function show() {
         $requested = RequestModell::where('status', "beantragt")->get(); //get all requested requests
         $confirmed = RequestModell::where('status', "bestaetigt")->get(); //get all confirmed request
-        return view('marketing', ['requested' => $requested, 'confirmed' => $confirmed]);
+        return view('request.marketing', ['requested' => $requested, 'confirmed' => $confirmed]);
     }
 
-    //Show Date Page
+    //Show Appointment Page
     public function appointment(RequestModell $employee) {
-        return view('appointment', ['employee' => $employee]);
+        return view('request.appointment', ['employee' => $employee])->with('eID', $employee->id);
     }
 
-    //Save Date
+    //Reject Request
+    public function delete(RequestModell $employee) {
+        //reject request by deleting from database
+        DB::table('request_modells')
+            ->where('id', $employee->id)
+            ->delete();
+        return redirect('/marketing');
+    }
+
+    //Save Appointment
     public function saveAppointment(Request $request, RequestModell $employee) {
         //update status in database
         DB::table('request_modells')

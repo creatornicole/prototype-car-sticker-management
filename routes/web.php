@@ -28,6 +28,9 @@ Route::get('/marketing', [RequestController::class, 'show']);
 //Show Appointment Page
 Route::get('/marketing/{employee}/appointment', [RequestController::class, 'appointment']);
 
+//Reject Request
+Route::get('/marketing/{employee}/decline', [RequestController::class, 'delete']);
+
 //Save Date
 Route::put('/marketing/{employee}/appointment/save', [RequestController::class, 'saveAppointment']);
 
@@ -43,7 +46,7 @@ Route::get('/sekretariat/{employee}/confirm', [CarStickerController::class, 'con
 //Show Voucher Selection Page
 Route::get('/vouchers', [CarStickerController::class, 'voucherselection']);
 
-//Show Voucher for each Employee
+//Show Voucher for Employee
 Route::get('/vouchers/{employee}/change', [CarStickerController::class, 'change']);
 
 //Save Change Voucher

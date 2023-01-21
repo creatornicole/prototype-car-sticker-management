@@ -53,17 +53,50 @@
             margin-top: 0;
         }
 
-        .request-form label,
-        .request-form input {
-            display: block;
+        .request-form div {
+            width: 450px;
         }
 
         .request-form input {
-            margin: 0px 0px 20px 15px;
+            display: inline-block;
+            border: none;
+            border-radius: 3px;
+            width: 200px;
+            padding: 10px;
+            margin: 25px 0px 0px 15px;
+        }
+
+        .request-form label {
+            display: inline-block;
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        .request-form button {
+            border-radius: 3px;
+            border: 0.5px solid #343434;
+            padding: 5px;
+            margin-top: 25px;
+            /* right align button in div */
+            display: block;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        form button,
+        form input {
+            font-family: 'Poppins', sans-serif;
         }
 
         form button:hover {
+            border: 2px solid #343434;
             cursor: pointer;
+        }
+
+        /* input fail message */
+        .fail-message {
+            color: red;
+            text-align: right;
         }
 
         /* table layout */
@@ -89,13 +122,15 @@
     </style>
 </head>
 <body>
-
     <nav>
         <a href="/">Mitarbeiter</a>
         <a href="/marketing">Marketing</a>
         <a href="/sekretariat">Sekretariat</a>
         <a href="/vouchers">Gutscheinauswahl</a>
     </nav>
+
+    <!-- dynamic headline -->
+    <h1>{{session('headline')}}</h1>
 
     <main>
         {{$slot}}
