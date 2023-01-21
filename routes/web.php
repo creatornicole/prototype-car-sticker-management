@@ -43,4 +43,9 @@ Route::get('/sekretariat/{employee}/confirm', [CarStickerController::class, 'con
 //Show Voucher Selection Page
 Route::get('/vouchers', [CarStickerController::class, 'voucherselection']);
 
-//Set Voucher
+//Show Voucher for each Employee
+Route::get('/vouchers/{employee}/change', [CarStickerController::class, 'change']);
+
+//Save Change Voucher
+Route::put('/vouchers/{employee}/change/save', [CarStickerController::class, 'save']);
+

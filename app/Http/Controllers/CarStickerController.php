@@ -31,6 +31,21 @@ class CarStickerController extends Controller
 
     //Show Voucher Selection Page
     public function voucherselection() {
-        return view('vouchers');
+        $active = RequestModell::where('status', "laufend")->get(); //get all active requests
+        return view('vouchers', ['active' => $active]);
+    }
+
+    //Show Voucher for each Employee
+    public function change(RequestModell $employee) {
+        return view('voucher', ['employee' => $employee]);
+    }
+
+    //Save Change Voucher
+    public function save(Request $request, RequestModell $employee) {
+        //update voucher in database
+        DB::table('request_modells')
+            ->where('id', $employee->id)
+            ->update(['voucher' => $request->voucherlist]);
+            return redirect('vouchers')->with('message', 'Gutscheinauswahl erfolgreich gespeichert.');
     }
 }
