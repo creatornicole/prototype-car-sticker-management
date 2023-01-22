@@ -54,10 +54,9 @@
                             <td>{{$confirm->surname}}, {{$confirm->firstname}}</td>
                             <td>{{$confirm->appointment}}</td>
                             <td>
-                                <a href="/marketing/{{$confirm->id}}/appointment/confirm">Bestätigen</a><br>
-                                <a href="">Bearbeiten</a>
-                            
-                            </td> <!-- button to confirm appointment -->
+                                <a href="/marketing/{{$confirm->id}}/appointment/confirm">Bestätigen</a>
+                                <!-- optional TODO: button to edit appointment -->
+                            </td>
                         </tr>
                     @endforeach
                 </table>

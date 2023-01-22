@@ -1,5 +1,5 @@
 <x-layout>
-    <h1>Vereinbare einen Termin für {{$employee->firstname}}</h1>
+    <h1>Vereinbare einen Termin für {{$employee->firstname}} {{$employee->surname}}</h1>
 
     <form method="post" action="/marketing/{{$employee->id}}/appointment/save"> <!-- saves date input in database -->
         @csrf <!-- prevents crossside scripting -->

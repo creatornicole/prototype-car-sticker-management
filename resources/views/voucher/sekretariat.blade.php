@@ -25,8 +25,8 @@
                     <td>{{$a->last}}</td>
                     <td>{{$a->next}}</td>
                     <td>
-                        <a href="/sekretariat/{{$a->id}}/inform">Benachrichtigen</a>
-                        <a href="/sekretariat/{{$a->id}}/confirm">Auszahlen</a><br>
+                        <a href="/sekretariat/{{$a->id}}/inform">Benachrichtigen</a><br>
+                        <a href="/sekretariat/{{$a->id}}/confirm">Auszahlen</a>
                     </td>
                 </tr>
             @endforeach
