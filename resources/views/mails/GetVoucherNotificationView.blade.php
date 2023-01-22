@@ -1,0 +1,1 @@
+Hey {{$name}}! Du kannst deinen Gutschein bis zum xx.xx.xxxx im Sekretariat abholen.

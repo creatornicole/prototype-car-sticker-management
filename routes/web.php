@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestController;
 use Symfony\Component\Routing\RequestContext;
 use App\Http\Controllers\CarStickerController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::put('/marketing/{employee}/appointment/save', [RequestController::class, 
 //Confirm Appointment
 Route::get('/marketing/{employee}/appointment/confirm', [RequestController::class, 'confirmAppointment']);
 
+
 //Show all currently active Requests
 Route::get('/sekretariat', [CarStickerController::class, 'show']);
 
@@ -52,3 +54,6 @@ Route::get('/vouchers/{employee}/change', [CarStickerController::class, 'change'
 //Save Change Voucher
 Route::put('/vouchers/{employee}/change/save', [CarStickerController::class, 'save']);
 
+
+//Send Mail
+Route::get('/mail', [MailController::class, 'sendMail']);

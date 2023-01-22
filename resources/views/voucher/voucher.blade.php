@@ -1,4 +1,5 @@
 <x-layout>
+    <!-- let user change voucher -->
     <h1>Wähle Deinen Wunschgutschein aus</h1>
 
     <form method="post" action="/vouchers/{{$employee->id}}/change/save"> <!-- saves date input in database -->

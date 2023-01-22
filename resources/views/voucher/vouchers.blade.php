@@ -1,7 +1,7 @@
 <x-layout>
     <h1>Wähle deinen Wunschgutschein aus</h1>
 
-    <!-- set vouchers for employees -->
+    <!-- show employee's vouchers -->
     <table>
         @foreach($active as $a)
             <tr>

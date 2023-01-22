@@ -1,8 +1,6 @@
 <x-layout>
     <h1>Beklebungen</h1>
-
-
-
+    
     <!-- show all active requests -->
     @if(count($active) == 0)
         <p>Keine Beklebungen vorhanden.</p>
