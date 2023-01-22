@@ -5,23 +5,18 @@
     <div class="requests-main-div">
         <!-- left side with all requested requests -->
         <div>
+            <h2>Ausstehende Anträge</h2>
             <!-- display all database request entries in table where status is 'beantragt'
                 if database entries exist -->
             @if(count($requested) == 0)
                 <p>Zur Zeit sind keine neuen Anträge vorhanden.</p>
             @else 
-                <table class="request-table">
+                <table>
                     <tr>
                         <th></th>
-                        <th>Nachname</th>
-                        <th>Vorname</th>
-                        <!-- TODO: Add Email Adress -->
-                        <th>Automarke</th>
-                        <th>Automodell</th>
-                        <th>Herstellernummer</th>
-                        <th>Typ</th>
-                        <th>Baujahr</th>
-                        <th>Farbcode</th>
+                        <th>Nachname, Vorname</th>
+                        <!-- optional TODO: Add Email Adress -->
+                        <th>Autodaten</th>
                         <th>Antrag erstellt am...</th>
                     </tr>
         
@@ -32,14 +27,8 @@
                                     <a href="/marketing/{{$request->id}}/appointment">Bestätigen</a><br>
                                     <a href="/marketing/{{$request->id}}/decline">Ablehnen</a>
                                 </td> <!-- Add Button to Send Mail to Employee -->
-                                <td>{{$request->surname}}</td>
-                                <td>{{$request->firstname}}</td>
-                                <td>{{$request->brand}}</td>
-                                <td>{{$request->model}}</td>
-                                <td>{{$request->hstn}}</td>
-                                <td>{{$request->type}}</td>
-                                <td>{{$request->cnstrYear}}</td>
-                                <td>{{$request->color}}</td>
+                                <td>{{$request->surname}}, {{$request->firstname}}</td>
+                                <td>{{$request->brand}}, {{$request->model}}, {{$request->hstn}}, {{$request->type}}, {{$request->cnstrYear}}, {{$request->color}}</td>
                                 <td>{{$request->created_at}}</td> <!-- optional TODO: change format -->
                             </tr>
                     @endforeach
@@ -49,10 +38,11 @@
         
             <!-- right side with all confirmed requests -->
             <div>
+                <h2>Termine bestätigter Anträge</h2>
             <!-- display all database request entries in table where status is 'bestaetigt'
                 if database entries exist -->
             @if(count($confirmed) != 0)
-                <table class="request-table">
+                <table>
                     <tr>
                         <th>Nachname, Vorname</th>
                         <th>Termin</th>

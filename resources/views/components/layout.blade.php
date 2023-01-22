@@ -12,16 +12,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <style>
+        /************************* Layout *****************************/
         body {
+            display: flex;
             font-family: 'Poppins', sans-serif;
             color: #343434;
             background-color: #EAEDF8;
-            padding: 85px 120px;
             margin: 0;
         }
 
-        h1 {
-            margin-bottom: 50px;
+        main {
+            padding: 50px 75px 0px 75px;
+        }
+
+        nav {
+            background-color: #CED2E0;
+            height: 100vh;
+            padding: 200px 30px 0px 30px;
+        }
+
+        nav a {
+            text-decoration: none; 
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        nav a:hover {
+            text-shadow: 2px 4px 10px #343434;
         }
 
         .flash-message {
@@ -38,26 +55,38 @@
             right: 0;
         }
 
-        nav a {
-           text-decoration: none; 
-           margin-right: 25px;
-        }  
-
-        nav a:hover {
-            text-shadow: 2px 4px 10px #343434;
+        h1 {
+            margin-bottom: 50px;
         }
 
-        /* forms */
-        form {
-            margin: 50px;
-            margin-top: 0;
+        a {
+            color: #343434;
+            text-decoration: underline;
         }
 
-        .request-form div {
-            width: 450px;
+        a:hover {
+            color: #CED2E0;
+            background-color: #343434;
         }
 
-        .request-form input {
+        hr {
+            margin: 30px 0;
+        }
+
+        /************************* Forms *****************************/
+        label {
+            display: inline-block;
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        form button,
+        form input,
+        form select {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        form input {
             display: inline-block;
             border: none;
             border-radius: 3px;
@@ -66,26 +95,12 @@
             margin: 25px 0px 0px 15px;
         }
 
-        .request-form label {
-            display: inline-block;
-            width: 200px;
-            margin-left: 10px;
-        }
-
-        .request-form button {
+        form button {
             border-radius: 3px;
             border: 0.5px solid #343434;
-            padding: 5px;
+            padding: 9px;
             margin-top: 25px;
-            /* right align button in div */
-            display: block;
-            margin-left: auto;
-            margin-right: 0;
-        }
-
-        form button,
-        form input {
-            font-family: 'Poppins', sans-serif;
+            margin-left: 10px;
         }
 
         form button:hover {
@@ -93,48 +108,69 @@
             cursor: pointer;
         }
 
+        form select {
+            padding: 9px;
+        }
+
+        .request-form button {
+            /* right align button in div */
+            display: block;
+            margin-left: auto;
+            margin-right: 9px;
+        }
+
         /* input fail message */
         .fail-message {
             color: red;
-            text-align: right;
         }
 
-        /* table layout */
-        .request-table th,
-        .request-table td {
-            text-align: center;
-            padding: 2px 12px;
+        /************************* Tables *****************************/
+        table,
+        th,
+        td {
+            border: 1px solid #343434;
+            border-collapse: collapse;
         }
 
-        .request-summary-table {
-            margin: 50px;
+        table {
+            margin-right: 10px;
         }
 
-        .request-summary-table td {
-            padding-right: 30px;
+        th {
+            height: 55px;
         }
 
+
+        th,
+        td {
+            padding: 5px 12px;
+        }
+
+        /************************* Others *****************************/
+        /*** Requests Page (Marketing) ***/
         .requests-main-div {
-            display: flex;
-            justify-content: space-around;
+            display: flex; /* position request page tables next to each other */
         }
 
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/">Mitarbeiter</a>
-        <a href="/marketing">Marketing</a>
-        <a href="/sekretariat">Sekretariat</a>
-        <a href="/vouchers">Gutscheinauswahl</a>
-    </nav>
 
-    <!-- dynamic headline -->
-    <h1>{{session('headline')}}</h1>
-
-    <main>
-        {{$slot}}
-    </main>
+        <nav>
+            <a href="/">Mitarbeiter</a>
+            <a href="/marketing">Marketing</a>
+            <a href="/sekretariat">Sekretariat</a>
+            <a href="/vouchers">Gutscheinauswahl</a>
+        </nav>
+    
+        <!-- dynamic headline -->
+        <h1>{{session('headline')}}</h1>
+    
+        <main>
+            {{$slot}}
+        </main>
+   
+    
 
     <!-- flash message component, position fixed in style -->
     <x-flash-message />

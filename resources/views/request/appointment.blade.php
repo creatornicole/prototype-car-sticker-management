@@ -8,7 +8,7 @@
         <input type="text" name="appointment"> 
         @error('appointment')
             <!-- action if validation fails -->
-            <p>{{$message}}</p>
+            <p class="fail-message">{{$message}}</p>
         @enderror
 
         <button type="submit">Termin senden</button> <!-- send confirmation mail to employee -->

@@ -1,13 +1,10 @@
 <x-layout>
     <h1>Wähle Deinen Wunschgutschein aus</h1>
 
-    <p>Aktuell: {{$employee->voucher}}</p>
-
     <form method="post" action="/vouchers/{{$employee->id}}/change/save"> <!-- saves date input in database -->
         @csrf <!-- prevents crossside scripting -->
         @method('PUT') <!-- updating request to database -->
 
-        <label for="voucherlist">Ändern:</label>
         <select name="voucherlist">
             <option value="Wunschgutschein 1">Wunschgutschein 1</option>
             <option value="Wunschgutschein 2">Wunschgutschein 2</option>
