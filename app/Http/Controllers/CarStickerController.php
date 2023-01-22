@@ -26,7 +26,7 @@ class CarStickerController extends Controller
         DB::table('request_modells')
             ->where('id', $employee->id)
             ->update(['last' => Carbon::now()]);
-        return redirect('sekretariat');
+        return redirect('sekretariat')->with('message', 'Gutschein Benachrichtigung erfolgreich versendet.');
     }
 
     //Show Voucher Selection Page

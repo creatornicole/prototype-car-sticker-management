@@ -16,7 +16,7 @@
                         <th></th>
                         <th>Nachname, Vorname</th>
                         <!-- optional TODO: Add Email Adress -->
-                        <th>Autodaten</th>
+                        <th>Automarke, Modell, Herstellernummer, Typ, Baujahr, Farbe</th>
                         <th>Antrag erstellt am...</th>
                     </tr>
         
@@ -46,13 +46,18 @@
                     <tr>
                         <th>Nachname, Vorname</th>
                         <th>Termin</th>
+                        <th></th>
                     </tr>
                     @foreach($confirmed as $confirm)
                         <!-- optional TOOD: sort by earliest date -->
                         <tr>
                             <td>{{$confirm->surname}}, {{$confirm->firstname}}</td>
                             <td>{{$confirm->appointment}}</td>
-                            <td><a href="/marketing/{{$confirm->id}}/appointment/confirm">Bestätigen</a></td> <!-- button to confirm appointment -->
+                            <td>
+                                <a href="/marketing/{{$confirm->id}}/appointment/confirm">Bestätigen</a><br>
+                                <a href="">Bearbeiten</a>
+                            
+                            </td> <!-- button to confirm appointment -->
                         </tr>
                     @endforeach
                 </table>

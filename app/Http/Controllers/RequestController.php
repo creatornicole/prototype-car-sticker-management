@@ -45,7 +45,7 @@ class RequestController extends Controller
 
     //Show Appointment Page
     public function appointment(RequestModell $employee) {
-        return view('request.appointment', ['employee' => $employee])->with('eID', $employee->id);
+        return view('request.appointment', ['employee' => $employee]);
     }
 
     //Reject Request
@@ -54,7 +54,7 @@ class RequestController extends Controller
         DB::table('request_modells')
             ->where('id', $employee->id)
             ->delete();
-        return redirect('/marketing');
+        return redirect('/marketing')->with('message', 'Auftrag wurde abgelehnt.');
     }
 
     //Save Appointment
@@ -70,7 +70,7 @@ class RequestController extends Controller
         //set date value in database
         $employee->update($formFields);
         //redirect to requests page
-        return redirect('/marketing');
+        return redirect('/marketing')->with('message', 'Termin erfolgreich festgelegt.');
     }
 
     //Confirm Appointment
@@ -80,11 +80,10 @@ class RequestController extends Controller
             ->where('id', $employee->id)
             ->update(['status' => "laufend"]);
         //update next handing over of voucher
-        $next = Carbon::parse($employee->appointment)->addMonths(4);
         DB::table('request_modells')
             ->where('id', $employee->id)
-            ->update(['next' => $next]);
+            ->update(['next' => Carbon::parse($employee->appointment)->addMonths(4)]);
         //redirect to requests page
-        return redirect('/marketing');
+        return redirect('/marketing')->with('message', 'Termin erfolgreich bestätigt.');
     }
 }
