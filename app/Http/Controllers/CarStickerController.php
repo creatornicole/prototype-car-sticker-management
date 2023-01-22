@@ -15,6 +15,13 @@ class CarStickerController extends Controller
         return view('voucher.sekretariat', ['active' => $active]);
     }
 
+    //Inform user to get voucher
+    public function inform(RequestModell $employee) {
+        //send mail to inform employee to get voucher
+        app('App\Http\Controllers\MailController')->getVoucher($employee);
+        return redirect('sekretariat');
+    }
+
     //Confirm handing over of voucher
     public function confirm(RequestModell $employee) {
         //update database entries
@@ -26,6 +33,10 @@ class CarStickerController extends Controller
         DB::table('request_modells')
             ->where('id', $employee->id)
             ->update(['last' => Carbon::now()]);
+
+        //send mail
+        app('App\Http\Controllers\MailController')->voucherConfirmation($employee);
+        
         return redirect('sekretariat')->with('message', 'Gutschein Benachrichtigung erfolgreich versendet.');
     }
 
@@ -37,7 +48,7 @@ class CarStickerController extends Controller
 
     //Show Voucher for Employee
     public function change(RequestModell $employee) {
-        return view('voucher.voucher', ['employee' => $employee])->with('eID', $employee->id);
+        return view('voucher.voucher', ['employee' => $employee]);
     }
 
     //Save Change Voucher
@@ -46,6 +57,10 @@ class CarStickerController extends Controller
         DB::table('request_modells')
             ->where('id', $employee->id)
             ->update(['voucher' => $request->voucherlist]);
-            return redirect('vouchers')->with('message', 'Gutscheinauswahl erfolgreich gespeichert.');
+
+        //send mail
+        app('App\Http\Controllers\MailController')->voucherChange($employee, $request->voucherlist);
+
+        return redirect('vouchers')->with('message', 'Gutscheinauswahl erfolgreich gespeichert.');
     }
 }

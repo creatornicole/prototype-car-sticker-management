@@ -155,8 +155,6 @@
     </style>
 </head>
 <body>
-        <a href="/mail">Email testen</a>
-
         <nav>
             <a href="/">Mitarbeiter</a>
             <a href="/marketing">Marketing</a>

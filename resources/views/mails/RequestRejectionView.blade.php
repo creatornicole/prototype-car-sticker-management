@@ -1,5 +1,5 @@
 @component('mail::message') <!-- use laravel email template -->
 
-Du kannst deinen {{$voucher}} im Sekretariat abholen.
+Hiermit wird Ihr Antrag vom {{$set}} auf Beklebung eines Privat-Kfz abgelehnt.
 
 @endcomponent 

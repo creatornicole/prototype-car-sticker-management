@@ -3,18 +3,17 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-class GetVoucherNotification extends Mailable
+class VoucherChange extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $voucher;
+    public $voucher; //chosen voucher
 
     /**
      * Create a new message instance.
@@ -23,6 +22,7 @@ class GetVoucherNotification extends Mailable
      */
     public function __construct($voucher)
     {
+        //get new voucher to tell employee to which it was set
         $this->voucher = $voucher;
     }
 
@@ -34,9 +34,7 @@ class GetVoucherNotification extends Mailable
     public function envelope()
     {
         return new Envelope(
-
-            from: new Address('sekretariat@quarter.com', 'Sekretariat'),
-            subject: 'Gutschein zu Abholung bereit',
+            subject: 'Geänderter Gutschein',
         );
     }
 
@@ -48,7 +46,7 @@ class GetVoucherNotification extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'mails.GetVoucherNotificationView',
+            markdown: 'mails.VoucherChangeView',
         );
     }
 

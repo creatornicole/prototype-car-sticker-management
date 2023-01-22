@@ -9,7 +9,7 @@
         <table class="request-table">
             <tr>
                 <th>Nachname, Vorname</th>
-                <th>Autodaten</th>
+                <th>Automarke, Modell, Herstellernummer, Typ, Baujahr, Farbe</th>
                 <th>Gutschein</th>
                 <th>Laufend seit...</th>
                 <th>Letzte Ausschüttung</th>
@@ -24,7 +24,10 @@
                     <td>{{$a->appointment}}</td>
                     <td>{{$a->last}}</td>
                     <td>{{$a->next}}</td>
-                    <td><a href="/sekretariat/{{$a->id}}/confirm">Auszahlen</a></td>
+                    <td>
+                        <a href="/sekretariat/{{$a->id}}/inform">Benachrichtigen</a>
+                        <a href="/sekretariat/{{$a->id}}/confirm">Auszahlen</a><br>
+                    </td>
                 </tr>
             @endforeach
         </table>

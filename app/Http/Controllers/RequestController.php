@@ -32,8 +32,11 @@ class RequestController extends Controller
         //create in database
         RequestModell::create($formFields);
 
+        //send mail
+        app('App\Http\Controllers\MailController')->sendRequestNotification();
+
         //redirect to same page with flash message
-        return redirect('request.index')->with('message', 'Antrag erfolgreich abgesendet.');
+        return redirect('/')->with('message', 'Antrag erfolgreich abgesendet.');
     }   
 
     //Show Requests
@@ -50,10 +53,14 @@ class RequestController extends Controller
 
     //Reject Request
     public function delete(RequestModell $employee) {
+        //send mail
+        app('App\Http\Controllers\MailController')->sendRejection($employee);
+
         //reject request by deleting from database
         DB::table('request_modells')
             ->where('id', $employee->id)
             ->delete();
+        
         return redirect('/marketing')->with('message', 'Auftrag wurde abgelehnt.');
     }
 
@@ -69,6 +76,10 @@ class RequestController extends Controller
         ]);
         //set date value in database
         $employee->update($formFields);
+
+        //send mail
+        app('App\Http\Controllers\MailController')->sendAppointmentNotification($employee);
+
         //redirect to requests page
         return redirect('/marketing')->with('message', 'Termin erfolgreich festgelegt.');
     }
@@ -82,7 +93,11 @@ class RequestController extends Controller
         //update next handing over of voucher
         DB::table('request_modells')
             ->where('id', $employee->id)
-            ->update(['next' => Carbon::parse($employee->appointment)->addMonths(4)]);
+            ->update(['next' => Carbon::parse($employee->appointment)->addMonths(4)]);   
+        
+        //send mail
+        app('App\Http\Controllers\MailController')->sendAppointmentConfirmation($employee);
+        
         //redirect to requests page
         return redirect('/marketing')->with('message', 'Termin erfolgreich bestätigt.');
     }
